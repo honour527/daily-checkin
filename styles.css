@@ -264,7 +264,7 @@ h1::after {
     }
 }
 
-/* 管理员按钮样式 */
+/* 管理员按���样式 */
 .admin-btn {
     padding: 0.8rem 1.5rem;
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -634,9 +634,19 @@ h1::after {
 
 /* 移动端适配基础设置 */
 @media screen and (max-width: 768px) {
+    /* 容器样式调整 */
+    .container {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+    }
+
     /* 内容布局调整 */
     .content-wrapper {
-        padding: 1rem;
+        padding: 0;
+        height: auto;
     }
 
     /* 打卡类型按钮改为两列 */
@@ -653,60 +663,47 @@ h1::after {
 
     #checkInNote {
         grid-column: 1;
+        height: 60px; /* 减小文本框高度 */
     }
 
     .main-check-btn {
         grid-column: 1;
+        height: 40px; /* 减小按钮高度 */
     }
 
-    /* 记录列表改为单列 */
+    /* 记录列表改为单列且限制高度 */
     .records-container {
         grid-template-columns: 1fr;
         gap: 1rem;
+        max-height: calc(100vh - 300px); /* 动态计算高度 */
+        overflow-y: auto;
     }
 
-    /* 调整字体大小 */
+    .check-in-records,
+    .event-records {
+        height: auto;
+        max-height: none;
+    }
+
+    /* 调整字体大小和间距 */
     h1 {
         font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     h2 {
         font-size: 1.2rem;
+        margin-bottom: 0.8rem;
     }
 
     /* 按钮大小调整 */
-    .type-btn,
-    .main-check-btn,
-    #eventForm button[type="submit"] {
-        padding: 0.6rem 1rem;
+    .type-btn {
+        padding: 0.6rem;
         font-size: 0.9rem;
+        height: 40px;
     }
 
-    /* 输入框调整 */
-    #eventInput {
-        font-size: 0.9rem;
-    }
-
-    /* 记录项内容调整 */
-    .check-in-item,
-    .event-item {
-        padding: 0.8rem;
-    }
-}
-
-/* 更小屏幕的特殊调整 */
-@media screen and (max-width: 480px) {
-    /* 进一步缩小间距 */
-    .content-wrapper {
-        padding: 0.8rem;
-    }
-
-    /* 更小的字体 */
-    .btn-text {
-        font-size: 0.85rem;
-    }
-
-    /* 调整事件表单布局 */
+    /* 事件表单调整 */
     #eventForm {
         flex-direction: column;
         gap: 0.8rem;
@@ -714,6 +711,56 @@ h1::after {
 
     #eventForm button[type="submit"] {
         width: 100%;
+        height: 40px;
     }
+
+    #eventInput {
+        width: 100%;
+        height: 40px;
+    }
+
+    /* 记录项内容调整 */
+    .check-in-item,
+    .event-item {
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* 管理员模态框调整 */
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+        padding: 1rem;
+    }
+
+    .admin-check-in-list {
+        max-height: 60vh;
+    }
+}
+
+/* 更小屏幕的特殊调整 */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0.8rem;
+    }
+
+    .type-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .check-in-type-buttons {
+        gap: 0.5rem;
+    }
+
+    .records-container {
+        max-height: calc(100vh - 280px);
+    }
+}
+
+/* 确保页面不会水平滚动 */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
   
