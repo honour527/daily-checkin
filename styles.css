@@ -631,4 +631,89 @@ h1::after {
     border-radius: 10px;
     border: 1px solid #e5e7eb;
 }
+
+/* 移动端适配基础设置 */
+@media screen and (max-width: 768px) {
+    /* 内容布局调整 */
+    .content-wrapper {
+        padding: 1rem;
+    }
+
+    /* 打卡类型按钮改为两列 */
+    .check-in-type-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    /* 打卡操作区域调整 */
+    .check-in-action {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    #checkInNote {
+        grid-column: 1;
+    }
+
+    .main-check-btn {
+        grid-column: 1;
+    }
+
+    /* 记录列表改为单列 */
+    .records-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* 调整字体大小 */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    /* 按钮大小调整 */
+    .type-btn,
+    .main-check-btn,
+    #eventForm button[type="submit"] {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* 输入框调整 */
+    #eventInput {
+        font-size: 0.9rem;
+    }
+
+    /* 记录项内容调整 */
+    .check-in-item,
+    .event-item {
+        padding: 0.8rem;
+    }
+}
+
+/* 更小屏幕的特殊调整 */
+@media screen and (max-width: 480px) {
+    /* 进一步缩小间距 */
+    .content-wrapper {
+        padding: 0.8rem;
+    }
+
+    /* 更小的字体 */
+    .btn-text {
+        font-size: 0.85rem;
+    }
+
+    /* 调整事件表单布局 */
+    #eventForm {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    #eventForm button[type="submit"] {
+        width: 100%;
+    }
+}
   
