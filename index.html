@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>打卡与事件录</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="background-image" id="backgroundImage"></div>
+        <div class="content-wrapper">
+            <!-- 左侧励志文字 -->
+            <div class="inspiration-section">
+                <div class="inspiration-quote">
+                    <p id="quoteText">生命不是要超越别人，而是要超越自己</p>
+                </div>
+            </div>
+
+            <!-- 右侧打卡系统 -->
+            <div class="main-content">
+                <div class="container">
+                    <div class="header-section">
+                        <h1>每日打卡记录</h1>
+                        <button id="adminBtn" class="admin-btn">
+                            <span class="btn-icon">⚙️</span>
+                            <span class="btn-text">管理员</span>
+                        </button>
+                    </div>
+                    
+                    <div class="check-in-section">
+                        <div class="check-in-header">
+                            <div class="check-in-info">
+                                <h2>打卡</h2>
+                                <p class="last-check-in">
+                                    <span>上一次打卡时间：</span>
+                                    <span id="lastCheckIn">暂无</span>
+                                </p>
+                            </div>
+                            <div class="check-in-controls">
+                                <div class="check-in-type-buttons">
+                                    <button type="button" class="type-btn work-type" data-type="work">
+                                        💼 工作打卡
+                                    </button>
+                                    <button type="button" class="type-btn study-type" data-type="study">
+                                        📚 学习打卡
+                                    </button>
+                                    <button type="button" class="type-btn sport-type" data-type="sport">
+                                        🏃 运动打卡
+                                    </button>
+                                    <button type="button" class="type-btn sleep-type" data-type="sleep">
+                                        😴 睡觉打卡
+                                    </button>
+                                </div>
+                                <div class="check-in-action">
+                                    <textarea id="checkInNote" placeholder="添加打卡备注（选填" rows="2"></textarea>
+                                    <button id="checkInBtn" class="main-check-btn">
+                                        <span class="btn-icon">✓</span>
+                                        <span class="btn-text">打卡</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="records-container">
+                            <div class="check-in-records">
+                                <h3>打卡记录</h3>
+                                <div id="checkInList" class="check-in-list"></div>
+                            </div>
+                            
+                            <div class="event-records">
+                                <h3>事件记录</h3>
+                                <form id="eventForm">
+                                    <input type="text" id="eventInput" placeholder="输入事件内" required>
+                                    <button type="submit">
+                                        <span class="btn-icon">📝</span>
+                                        <span class="btn-text">记录</span>
+                                    </button>
+                                </form>
+                                <div id="eventList" class="event-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 管理员登录模态框 -->
+        <div id="adminModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="adminModalTitle">管理员登录</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="admin-login-form">
+                        <input type="password" id="adminPassword" placeholder="请输入管理员密码">
+                        <button id="loginBtn">
+                            <span class="btn-icon">🔑</span>
+                            <span class="btn-text">登录</span>
+                        </button>
+                    </div>
+                    <div id="adminCheckInList" class="admin-check-in-list" style="display: none;">
+                        <!-- 打卡记录将在这里显示 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
